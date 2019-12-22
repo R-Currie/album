@@ -16,12 +16,7 @@ export class Album extends Component {
     return (
       <div>
         <h1>{album.name}</h1>
-        <img
-          src={
-            "https://lastfm.freetls.fastly.net/i/u/64s/de4a95d4be4e554dee43ac399138dc96.png"
-          }
-          alt={album.name}
-        />
+        <img src={album.image[1]["#text"]} alt={album.name} />
       </div>
     );
   }
