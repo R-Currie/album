@@ -20,7 +20,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="ui container" style={{ paddingTop: "20px" }}>
         <Searchbar onSubmit={this.onSearchSubmit} />
         <List albums={this.state.albums} />
       </div>

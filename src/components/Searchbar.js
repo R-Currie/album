@@ -11,9 +11,10 @@ export class Searchbar extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.onFormSubmit}>
+      <div className="ui clearing segment">
+        <form className="ui form" onSubmit={this.onFormSubmit}>
           <label>Artist Search</label>
+          <br />
           <input
             type="text"
             value={this.state.term}
@@ -21,7 +22,13 @@ export class Searchbar extends Component {
               this.setState({ term: e.target.value });
             }}
           />
-          <button type="submit">Search</button>
+          <button
+            className="ui right floated button"
+            style={{ marginTop: "20px" }}
+            type="submit"
+          >
+            Search
+          </button>
         </form>
       </div>
     );
