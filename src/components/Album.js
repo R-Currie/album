@@ -16,7 +16,7 @@ export class Album extends Component {
     return (
       <div>
         <h1>{album.name}</h1>
-        <img src={album.image[1]["#text"]} alt={album.name} />
+        <img src={album.image[2]["#text"]} alt={album.name} />
       </div>
     );
   }

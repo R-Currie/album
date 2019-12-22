@@ -9,6 +9,8 @@ class App extends React.Component {
     albums: []
   };
 
+  // todo: Add options to search for artist, song title, album, etc and pass that through state
+
   onSearchSubmit = async term => {
     const res = await axios.get(
       `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${term}&api_key=b51e79f64b0918bfabb85f9627eabbd5&format=json`
