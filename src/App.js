@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import axios from "axios";
+import "./App.css";
+import List from "./components/List";
+import Searchbar from "./components/Searchbar";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    albums: []
+  };
+
+  onSearchSubmit = async term => {
+    const res = await axios.get(
+      `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${term}&api_key=b51e79f64b0918bfabb85f9627eabbd5&format=json`
+    );
+
+    console.log(term);
+    this.setState({ albums: res.data.topalbums.album, loading: false });
+  };
+
+  render() {
+    return (
+      <div>
+        <Searchbar onSubmit={this.onSearchSubmit} />
+        <List albums={this.state.albums} />
+      </div>
+    );
+  }
 }
 
 export default App;
