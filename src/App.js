@@ -8,6 +8,7 @@ import NewReleases from "./components/NewReleases";
 class App extends React.Component {
   state = {
     albums: [],
+    search: false,
     newReleases: []
   };
 
@@ -27,18 +28,25 @@ class App extends React.Component {
       `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${term}&api_key=b51e79f64b0918bfabb85f9627eabbd5&format=json`
     );
 
-    this.setState({ albums: res.data.topalbums.album, loading: false });
+    this.setState({
+      albums: res.data.topalbums.album,
+      loading: false,
+      search: true
+    });
   };
 
   render() {
     return (
       <div className="ui container" style={{ paddingTop: "20px" }}>
         <Searchbar onSubmit={this.onSearchSubmit} />
-        <List albums={this.state.albums} />
-        <NewReleases
-          getNewReleases={this.getNewReleases}
-          songs={this.state.newReleases}
-        />
+        {this.state.search ? (
+          <List albums={this.state.albums} />
+        ) : (
+          <NewReleases
+            getNewReleases={this.getNewReleases}
+            songs={this.state.newReleases}
+          />
+        )}
       </div>
     );
   }
