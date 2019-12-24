@@ -6,7 +6,7 @@ const List = props => {
     return <Album key={index} album={album} />;
   });
 
-  return <div>{albums}</div>;
+  return <div className="ui grid">{albums}</div>;
 };
 
 export default List;

@@ -6,6 +6,17 @@ body {
   background: rgb(27, 27, 27);
 }
 
-h1 {
+h1,
+h2,
+h3 {
   color: rgb(177, 177, 177);
+}
+
+.center {
+  text-align: center;
+}
+
+.album-name {
+  max-width: 176px;
+  text-align: center;
 }

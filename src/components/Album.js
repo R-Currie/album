@@ -14,8 +14,8 @@ export class Album extends Component {
     const { album } = this.props;
 
     return (
-      <div>
-        <h1>{album.name}</h1>
+      <div className="four wide column">
+        <h3 className="album-name">{album.name}</h3>
         <img src={album.image[2]["#text"]} alt={album.name} />
       </div>
     );
